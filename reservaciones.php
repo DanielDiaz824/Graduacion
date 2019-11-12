@@ -12,7 +12,7 @@
 
     <style>
     .salon{
-        margin:40px;
+        margin:41px;
     }
     .silla-reservada{
         color:red;
