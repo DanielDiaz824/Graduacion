@@ -60,6 +60,17 @@
             $("#modalConfirmar").modal("hide");
         });
     });
+    $.ajax({
+        url:"indicadores.php",
+        method:"GET",
+        dataType:"json"
+    })
+    .done(function(indicadores){
+        console.log(indicadores);
+        $("#indicador1 p").text(indicadores[0].lugares);
+        $("#indicador2 p").text(indicadores[1].lugares);
+        $("#indicador3 p").text(indicadores[2].lugares);
+    });
 });
     </script>  
     <style>

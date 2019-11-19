@@ -67,29 +67,10 @@
 </head>
 <body>
     <section class="salon">
-        <div class="contenedor-mesa" data-mesa="1">
-            <i class="fas fa-dot-circle mesa"></i>
-            <i class="fas fa-chair silla silla-pos1 silla-reservada" title="Silla ya reservada :(" data-toggle="tooltip" data-placement="right"></i>
-            <i class="fas fa-chair silla silla-pos2"></i>
-            <i class="fas fa-chair silla silla-pos3"></i>
-            <i class="fas fa-chair silla silla-pos4"></i>
-            <i class="fas fa-chair silla silla-pos5"></i>
-            <i class="fas fa-chair silla silla-pos6"></i>
-            <i class="fas fa-chair silla silla-pos7"></i>
-            <i class="fas fa-chair silla silla-pos8"></i>
-        </div>
-        <div class="contenedor-mesa" data-mesa="2">
-            <i class="fas fa-dot-circle mesa"></i>
-            <i class="fas fa-chair silla silla-pos1"></i>
-            <i class="fas fa-chair silla silla-pos2"></i>
-            <i class="fas fa-chair silla silla-pos3"></i>
-            <i class="fas fa-chair silla silla-pos4"></i>
-            <i class="fas fa-chair silla silla-pos5"></i>
-            <i class="fas fa-chair silla silla-pos6"></i>
-            <i class="fas fa-chair silla silla-pos7"></i>
-            <i class="fas fa-chair silla silla-pos8"></i>
-        </div>
-        
+        <?php
+            include("procesarPlantillas.php");
+            echo $mesas;
+        ?>
     </section>
     <script>
         $(function () {

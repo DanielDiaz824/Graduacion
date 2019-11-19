@@ -1,6 +1,7 @@
 <?php 
     session_start();
     include("conexion.php");
+
     if($_POST["paquete1"]>0){
         $idUsuario=$_SESSION["datosUsuario"]["id"];
         $lugares=$_POST["paquete1"];
@@ -16,6 +17,7 @@
             echo "resultado de insertar paquete 1:".$resultado;
         }
     }
+    
     if($_POST["paquete2"]>0){
         $idUsuario=$_SESSION["datosUsuario"]["id"];
         $lugares=$_POST["paquete2"];
