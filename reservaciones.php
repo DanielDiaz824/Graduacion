@@ -11,12 +11,12 @@
     
 
     <style>
-    .salon{
+        .salon{
         margin:41px;
-    }
-    .silla-reservada{
+        }
+        .silla-reservada{
         color:red;
-    }
+        }
         .contenedor-mesa{
             margin:5px;
             width:150px;
@@ -74,25 +74,26 @@
     </section>
 
     <div class="modal" id="ventanaConfirmacion" role="dialog">
-    <div class="modal-dialog">
-    <div class="modal-content">
-    <div class="modal-header">
-        <h5 class="modal-title">Confirmar reservacion</h5>
-    </div>
-        <div class="modal-body"><p>¿Confirmar su reservacion?</p></div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-secondary" id="btnCancelar">No</button>
-        <button class="btn btn-primary" id="btnAceptar">Si</button>    
-    </div>
-    </div>
-    </div>
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Confirmar reservacion</h5>
+                </div>
+                <div class="modal-body">
+                    <p>¿Confirma su reservacion?</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn btn-secondary" id="btnCancelar">No</button>
+                  <button class="btn btn-primary" id="btnAceptar">Si</button>    
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
         var idSilla=0;
         $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
+            $('[data-toggle="tooltip"]').tooltip();
 
             $("#ventanaConfirmacion").modal({show:false});
 
@@ -116,10 +117,11 @@
                     method:"POST",
                     data:{
                         silla:idSilla
+                    }
                     })
                     .done(function(){
 
-                    });
+                    
                 });
             });
         });
