@@ -17,7 +17,7 @@ foreach($resultSetMesas as $fila){
     $statementSillas =
     "SELECT S.id,S.posicion,R.paquete,U.nombre 
     FROM sillas S 
-    LEFT JOIN reservaciones R ON R.id = S.id
+    LEFT JOIN reservaciones R ON R.id_silla = S.id
     LEFT JOIN usuarios U ON U.id=R.id_usuario
     WHERE id_mesa=$idMesa
     ";
