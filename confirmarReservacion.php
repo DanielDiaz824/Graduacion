@@ -2,7 +2,7 @@
     session_start();
     $idUsuario=$_SESSION["datosUsuario"]["id"];
     include("conexion.php");
-    $idSilla=$_POST["id_silla"];
+    $idSilla=$_POST["silla"];
     $paquete=$_POST["paquete"];
 
 

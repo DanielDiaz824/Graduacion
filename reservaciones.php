@@ -100,7 +100,7 @@
             $(".silla").on("click",function(){
                 var reservada=$(this).hasClass("silla-reservada");
                 if(!reservada){
-                    idSilla=$(this).data("id");
+                    idSilla=$(this).attr("data_id");
                     $("#ventanaConfirmacion").modal("show");
                 }else{
 
@@ -117,10 +117,11 @@
                     method:"POST",
                     data:{
                         silla:idSilla
+                        
                     }
                     })
                     .done(function(){
-
+                        $("#ventanaConfirmacion").modal("hide");
                     
                 });
             });
