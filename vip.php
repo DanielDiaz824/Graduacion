@@ -137,10 +137,12 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary">Cancelar</button>
                 <button type="button" class="btn btn-primary" id="btnAceptar">Aceptar</button>
+                
             </div>
             </div>
             </div>
      </div>
+     <a class="btn btn-success" target="_blank" href="http://localhost/graduacion4b/reservaciones.php" role="button">Reservaciones</a>
 
     <aside class="indicadores">
         <div id="indicador1">
