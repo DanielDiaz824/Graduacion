@@ -12,14 +12,19 @@
         .salon{
         margin:41px;
         }
+        .salon2{
+            display:inline-flex;
+            width:100%;
+        }
         .silla-reservada{
         color:red;
         }
         .contenedor-mesa{
             margin:5px;
-            width:150px;
+            width:30%;
             height:150px;
             position:relative;
+            display:inline-block;
         }
         .mesa{
             font-size:6em;
@@ -61,15 +66,32 @@
             top:56px;
             left:-20px;
         }
+        .pista{
+            width:30%;
+            padding:10px;
+        }
+        .img{
+            border-top:100px;
+            padding:8% 0px 0px 0px;
+        }
     </style>
 </head>
 <body>
+    <section class="salon2">
     <section class="salon">
         <?php
             include("procesarPlantillas.php");
             echo $mesas;
         ?>
     </section>
+    <section class="pista">
+        <h1>Aparta tu lugar</h1>
+    </section>
+    <section class="img">
+    <img src="img/salonn.jpeg" alt="salon">
+    </section>
+    </section>
+    
 
     <div class="modal" id="ventanaConfirmacion" role="dialog">
         <div class="modal-dialog">
