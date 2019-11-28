@@ -4,8 +4,20 @@
     <meta charset="UTF-8">
     <title>Registro</title>
     <link rel="stylesheet" href="css/main.css"/>
+
+    <style>
+    .form-group{
+        padding:15px;
+    }
+    </style>
+    
+        
+    
 </head>
 <body>
+    <div>
+        <h1>Registrarse es primero</h1>
+    </div>
     <section class="row">
         <div class="col-md-6">
             <form action="registroProceso.php" method="POST">

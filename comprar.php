@@ -31,6 +31,7 @@
             $statement="INSERT INTO usuarios_paquetes (idUsuario,paquete,lugares) VALUES ($idUsuario,2,$lugares)";
             $conexionBD->query($statement);
             echo "resultado de insertar paquete 2:".$resultado;
+            
         }
     }
     if($_POST["paquete3"]>0){

@@ -6,5 +6,4 @@
     }else{
         echo"Conexion exitosa a la Base de Datos!";
     } */
-
 ?>
