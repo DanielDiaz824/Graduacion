@@ -66,30 +66,30 @@
             top:56px;
             left:-20px;
         }
-        .pista{
-            width:30%;
-            padding:10px;
-        }
-        .img{
-            border-top:100px;
-            padding:8% 0px 0px 0px;
-        }
     </style>
 </head>
 <body>
-    <section class="salon2">
     <section class="salon">
         <?php
             include("procesarPlantillas.php");
             echo $mesas;
+
+            $result = mysql_query("SELECT (SELECT SUM(lugares) FROM usuarios_paquetes WHERE idUsuario = $idUsuario)-(SELECT SUM
+            (paquete) FROM reservaciones WHERE idUsuario = $idUsuario) AS totalsum FROM DUAL");
+
+            $row = mysql_fetch_assoc($result);
+            $sum = $row['totalsum'];
+            if($filas2>0){
+                if($sum>0){
+                    echo("<h1>Lugares reservados en total: ".$filas2.".</h1>");
+                    echo("<h1>Solo le quedan ".$sum." lugares disponibles</h1>");
+                }else{
+                    echo("<h1>Ya no quedan mas lugares</h1>");
+                }
+            }else{
+                echo("<h1>Seleccione una silla para continuar</h1>");
+            }
         ?>
-    </section>
-    <section class="pista">
-        <h1>Aparta tu lugar</h1>
-    </section>
-    <section class="img">
-    <img src="img/salonn.jpeg" alt="salon">
-    </section>
     </section>
     
 
@@ -142,7 +142,7 @@
                     })
                     .done(function(){
                         $("#ventanaConfirmacion").modal("hide");
-                    
+                        window.location.href="reservaciones.php";
                 });
             });
         });
