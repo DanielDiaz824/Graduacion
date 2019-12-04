@@ -59,6 +59,11 @@
 </head>
 
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: f1fde3;">
+    <a class="navbar-brand" href="#">
+    <img src="img/loguillo.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+    <a class="navbar-brand" href="xd.html">Universidad Politecnica de Durango</a>
+    </nav>
     <section class="container"> 
      <section class="row">
       <div class="col-md-6">

@@ -88,9 +88,26 @@
     aside.indicadores img{
         width:60px;
     }
+    .container-fluid img{
+        width:130px;
+        height: 100px;
+    }
+    .row{
+        padding:100px;
+        text-align:center;
+        margin-right:200px;
+    }
+    .indicadores{
+        padding:50px;
+    }
     </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: f1fde3;">
+        <a class="navbar-brand" href="#">
+        <img src="img/loguillo.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        <a class="navbar-brand" href="xd.html">Universidad Politecnica de Durango</a>
+    </nav>
     <section class="container-fluid">
     <section class="row">
     <div class="col-md-12">
@@ -98,27 +115,27 @@
     </div>
     <div class col-md-4>
     <h4>Basico</h4>
-    <img src="img/1.png" alt="basico">
+    <img src="img/basico.png" alt="basico">
     <input type="number" id="paquete1" value="0" min="0" max="10">
     <h4 data-precio="100">$0</h4>
     </div>
 
     <div class col-md-4>
     <h4>Medio</h4>
-    <img src="img/2.png" alt="medio">
+    <img src="img/medio.png" alt="medio">
     <input type="number" id="paquete2" value="0" min="0" max="10">
     <h4 data-precio="500">$0</h4>
     </div>
 
     <div class col-md-4>
     <h4>Premium</h4>
-    <img src="img/3.png" alt="premium">
+    <img src="img/premium.png" alt="premium">
     <input type="number" id="paquete3" value="0" min="0" max="10">
     <h4 data-precio="1000">$0</h4>
     </div>
     <div class="col-md-12">
         <button id="btnConfirmar" class="btn btn-primary">Confirmar</button>
-
+        <a class="btn btn-success" target="_blank" href="reservaciones.php" role="button">Reservaciones</a>
     </div>
     </section>
     </section>
@@ -127,7 +144,7 @@
 		<div class="modal-dialog" role="document">
 		  <div class="modal-content">
 			<div class="modal-header">
-			  <h5 class="modal-title">Confirmar Compra</h5>
+              <h5 class="modal-title">Confirmar Compra</h5>
 			  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 				<span aria-hidden="true">&times;</span>
 			  </button>
@@ -144,19 +161,19 @@
             </div>
             </div>
      </div>
-     <a class="btn btn-success" target="_blank" href="reservaciones.php" role="button">Reservaciones</a>
+     
 
     <aside class="indicadores">
         <div id="indicador1">
-            <img src="img/1.png" alt="paquete">
+            <img src="img/basico.png" alt="paquete">
             <p class="badge badge-danger">0</p>
         </div>
         <div id="indicador2">
-            <img src="img/2.png" alt="paquete">
+            <img src="img/medio.png" alt="paquete">
             <p class="badge badge-danger">0</p>
         </div>
         <div  id="indicador3">
-            <img src="img/3.png" alt="paquete">
+            <img src="img/premium.png" alt="paquete">
             <p class="badge badge-danger">0</p>
         </div>
 
