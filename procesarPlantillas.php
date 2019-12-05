@@ -3,41 +3,46 @@ session_start();
 $idUsuario = $_SESSION["datosUsuario"]["id"];
 
 include("conexion.php");
-
 $mesas = "";
+
 $plantillaMesa = file_get_contents("templates/mesa.html");
 $plantillaSilla = file_get_contents("templates/silla.html");
 
-$statementMesas = "SELECT id,numero FROM mesas";
-$resultSetMesas = $conexionBD->query($statementMesas);
+$statementMesas = "SELECT Id, numero
+                   FROM mesas";
+$resultadoMesas = $conexionDB->query($statementMesas);
 
-foreach($resultSetMesas as $fila){
+foreach($resultadoMesas as $fila){
     $sillas = "";
-    $idMesa = $fila["id"];
-    $statementSillas =
-    "SELECT S.id,S.posicion,R.paquete,U.nombre 
-    FROM sillas S 
-    LEFT JOIN reservaciones R ON R.id_silla = S.id
-    LEFT JOIN usuarios U ON U.id=R.id_usuario
-    LEFT JOIN usuarios_paquetes P ON R.paquete = P.paquete
-    WHERE id_mesa=$idMesa
-    ";
+    $idMesa = $fila["Id"];
 
+    $statementSillas = "SELECT S.id, S.posicion, R.paquete, U.nombre
+                        FROM sillas S
+                        LEFT JOIN reservaciones R ON R.idSilla = S.id
+                        LEFT JOIN usuarios U ON U.id = R.idUsuario
+                        WHERE idMesa = $idMesa";
+    $resultadoSillas = $conexionDB->query($statementSillas);
 
-$resultSetSillas = $conexionBD->query($statementSillas);
+    foreach($resultadoSillas as $fila){
+        $idSilla = $fila["id"];
+        $nombre = $fila["nombre"];
 
-foreach($resultSetSillas as $fila){
-    $idSilla=$fila["id"];
-    $nombre = $fila["nombre"];
-    
-    $posicion = $fila["posicion"];
-    $reservada = $fila["paquete"]? "silla-reservada":"";
-    $paquetes = $fila["paquete"];
-    $mensaje = $nombre ? "title=\"Esta silla ya la tiene $nombre Paquete $paquetes\"":"";
+        $paqueteVal = $fila["paquete"];
 
+        if($paqueteVal==1){
+            $paquete = "Basico";
+        }elseif($paqueteVal==2){
+            $paquete = "Medio";
+        }elseif($paqueteVal==3){
+            $paquete = "Premium";
+        }
 
-    $sillas .= sprintf($plantillaSilla,$posicion,$reservada,$mensaje,$idSilla);
-}
-$mesas .= sprintf($plantillaMesa,$idMesa,$sillas);
+        $posicion = $fila["posicion"];
+        $reservada = $fila["paquete"] ? "silla-reservada" : "";
+        $mensaje = $nombre ? "title=\"Esta silla ya la tiene $nombre y el paquete es $paquete!\"" : "";
+
+        $sillas .=  sprintf($plantillaSilla, $posicion, $reservada, $mensaje, $idSilla);
+    }
+    $mesas .= sprintf($plantillaMesa, $idMesa, $sillas);
 }
 ?>

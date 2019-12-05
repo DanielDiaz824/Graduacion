@@ -1,61 +1,84 @@
-<?php 
-    session_start();
-    include("conexion.php");
+<?php
+session_start();
 
-    if($_POST["paquete1"]>0){
-        $idUsuario=$_SESSION["datosUsuario"]["id"];
-        $lugares=$_POST["paquete1"];
+include("conexion.php");
 
-        $statementVerificarDuplicados="SELECT * FROM usuarios_paquetes WHERE idUsuario=$idUsuario AND paquete=1";
+if($_POST["paquete1"] > 0){
+    $idUsuario = $_SESSION["datosUsuario"]["id"];
+    $lugares = $_POST["paquete1"];
 
-        $resultadoVD=$conexionBD->query($statementVerificarDuplicados);
-        $duplicados=$resultadoVD->num_rows;
+    $statementVerificarDuplicados = "SELECT * FROM usuarios_paquetes
+                                     WHERE idUsuario = $idUsuario
+                                     AND paquete = 1";
+    $resultadoVerificarDuplicados = $conexionDB->query($statementVerificarDuplicados);
+    $duplicados = $resultadoVerificarDuplicados->num_rows;
 
-        if ($duplicados==0){
-            $statement="INSERT INTO usuarios_paquetes (idUsuario,paquete,lugares) VALUES ($idUsuario,1,$lugares)";
-            $conexionBD->query($statement);
-            echo "resultado de insertar paquete 1:".$resultado;
-        }
+    if($duplicados == 0){
+        $statement = "
+        INSERT INTO usuarios_paquetes
+        (idUsuario, paquete, lugares)
+        Values
+        ($idUsuario, 1, $lugares)
+        ";
     }
     
-    if($_POST["paquete2"]>0){
-        $idUsuario=$_SESSION["datosUsuario"]["id"];
-        $lugares=$_POST["paquete2"];
+    $resultado = $conexionDB->query($statement);
+    echo "resultado de insertar paquete1: ".$resultado;
+}
 
-        $statementVerificarDuplicados="SELECT * FROM usuarios_paquetes WHERE idUsuario=$idUsuario AND paquete=2";
+if($_POST["paquete2"] > 0){
+    $idUsuario = $_SESSION["datosUsuario"]["id"];
+    $lugares = $_POST["paquete2"];
 
-        $resultadoVD=$conexionBD->query($statementVerificarDuplicados);
-        $duplicados=$resultadoVD->num_rows;
+    $statementVerificarDuplicados = "SELECT * FROM usuarios_paquetes
+                                     WHERE idUsuario = $idUsuario
+                                     AND paquete = 2";
+    $resultadoVerificarDuplicados = $conexionDB->query($statementVerificarDuplicados);
+    $duplicados = $resultadoVerificarDuplicados->num_rows;
 
-        if ($duplicados==0){
-            $statement="INSERT INTO usuarios_paquetes (idUsuario,paquete,lugares) VALUES ($idUsuario,2,$lugares)";
-            $conexionBD->query($statement);
-            echo "resultado de insertar paquete 2:".$resultado;
-            
-        }
+    if($duplicados == 0){
+        $statement = "
+        INSERT INTO usuarios_paquetes
+        (idUsuario, paquete, lugares)
+        Values
+        ($idUsuario, 2, $lugares)
+        ";
     }
-    if($_POST["paquete3"]>0){
-        $idUsuario=$_SESSION["datosUsuario"]["id"];
-        $lugares=$_POST["paquete3"];
+    
+    $resultado = $conexionDB->query($statement);
+    echo "resultado de insertar paquete2: ".$resultado;
+}
 
-        $statementVerificarDuplicados="SELECT * FROM usuarios_paquetes WHERE idUsuario=$idUsuario AND paquete=3";
+if($_POST["paquete3"] > 0){
+    $idUsuario = $_SESSION["datosUsuario"]["id"];
+    $lugares = $_POST["paquete3"];
 
-        $resultadoVD=$conexionBD->query($statementVerificarDuplicados);
-        $duplicados=$resultadoVD->num_rows;
+    $statementVerificarDuplicados = "SELECT * FROM usuarios_paquetes
+                                     WHERE idUsuario = $idUsuario
+                                     AND paquete = 3";
+    $resultadoVerificarDuplicados = $conexionDB->query($statementVerificarDuplicados);
+    $duplicados = $resultadoVerificarDuplicados->num_rows;
 
-        if ($duplicados==0){
-            $statement="INSERT INTO usuarios_paquetes (idUsuario,paquete,lugares) VALUES ($idUsuario,3,$lugares)";
-            $conexionBD->query($statement);
-            echo "resultado de insertar paquete 3:".$resultado;
-        }
+    if($duplicados == 0){
+        $statement = "
+        INSERT INTO usuarios_paquetes
+        (idUsuario, paquete, lugares)
+        Values
+        ($idUsuario, 3, $lugares)
+        ";
     }
-    echo "<p>Lugares comprados</p>";
+    
+    $resultado = $conexionDB->query($statement);
+    echo "resultado de insertar paquete3: ".$resultado;
+}
 
-    echo "<p>".$_POST["paquete1"]."</p>"; 
-    echo "<p>".$_POST["paquete2"]."</p>";  
-    echo "<p>".$_POST["paquete3"]."</p>";  
+echo json_encode($lugaresTotales);
+echo "<p>Lugares Comprados </p>";
 
-    echo "<p>Usuario que hizo la compra</p>";
-    echo "<p>". $_SESSION["datosUsuario"]["id"] ."</p>";
+echo "<p>".$_POST["paquete1"]."</p>";
+echo "<p>".$_POST["paquete2"]."</p>";
+echo "<p>".$_POST["paquete3"]."</p>";
 
+echo "<p>Usuario que hizo la operacion</p>";
+echo "<p>".$_SESSION["datosUsuario"]["id"]."</p>";
 ?>

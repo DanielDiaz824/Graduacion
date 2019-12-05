@@ -1,42 +1,34 @@
 <?php
-    session_start();
-    $idUsuario=$_SESSION["datosUsuario"]["id"];
-    include("conexion.php");
-    $idSilla=$_POST["silla"];
-    $paquete0=$_POST["paquete1"];
-    $paquete2=$_POST["paquete2"];
-    $paquete3=$_POST["paquete3"];
+session_start();
+include("conexion.php");
 
-    $sql = "SELECT paquete FROM usuarios_paquetes where idUsuario=$idUsuario ";
-    $result1 = $conexionBD->query("SELECT SUM(lugares) FROM usuarios_paquetes where idUsuario=$idUsuario")->fetch_array();
-    $result2 = $conexionBD->query("SELECT COUNT(paquete) FROM reservaciones where id_usuario=$idUsuario")->fetch_array();
-    $Sum = $result1[0];
-    $Res=$result2[0];
-    $resta=$Sum-$Res;
+$idUsuario = $_SESSION["datosUsuario"]["id"];
+$idSilla = $_POST["silla"];
+$paquete = $_POST["paquete"];
 
-    /*echo"El usuario tiene: ".$Sum." lugares";
-    echo"El usuario tiene: ".$Res." lugares apartados";*/
+$statementPaquete = "SELECT(SELECT lugares FROM usuarios_paquetes WHERE paquete = $paquete AND idUsuario = $idUsuario)
+                     -(SELECT COUNT(*) FROM reservaciones WHERE paquete = $paquete AND idUsuario = $idUsuario) as Resultado";
 
-    $paquete=$conexionBD->query($sql);
-    $fila=mysqli_num_rows($paquete);
-    if($fila>0){
-        $fila = $paquete->fetch_array(MYSQLI_ASSOC);
+$resultadoPaquete = $conexionDB ->query($statementPaquete);
 
-        $_SESSION['Paquete1']=$fila['paquete'];
+if(mysqli_num_rows($resultadoPaquete)>0){
+    $fila = $resultadoPaquete->fetch_array(MYSQLI_ASSOC);
+    $_SESSION["paquete"] = $fila["Resultado"];
+}
+
+
+$Lugares = $_SESSION["paquete"];
+
+if($Lugares != 0){
+    $statement = "INSERT INTO reservaciones (idSilla,idUsuario,paquete) VALUES ('$idSilla','$idUsuario','$paquete')";
+    $resultado = $conexionDB ->query($statement);
+     
+    if($resultado){
+        echo "Registro exitoso";
     }
-    else {
-        echo "No hay resultados";
+    else{
+        echo "Error";
     }
-    $paquete1= $_SESSION['Paquete1'] ;
-        if($resta!=0){
-            $statementr="INSERT INTO reservaciones (id_silla,id_usuario,paquete) VALUES ('$idSilla','$idUsuario','$paquete1')";  
-            $resultado1= $conexionBD->query($statementr);
-            
-            if($resultado1){
-                echo "Registro exitoso";
-            }
-            else{
-                echo "Error en el registro :(";
-            }  
-        }
+}
+
 ?>

@@ -1,1 +1,40 @@
-@import"node_modules/bootstrap/scss/bootstrap";
+$jumbotron-bg: #a9a5a559;
+$jumbotron-color: #ffffff;
+
+@import "node_modules/bootstrap/scss/bootstrap";
+
+body{
+    background-image: url(../img/images1.jpg);
+    background-size: cover;
+}
+
+#CarouselPrincipal img{
+    height: 500px;
+}
+
+label{
+    color: white;
+}
+
+#paquetes h3{
+    color: white;
+}
+
+#paquetes h4{
+    color: white;
+}
+
+footer{
+    background-color: burlywood;
+}
+
+#Info{
+    display: flex;
+    align-items: center;
+}
+
+#Icon{
+    text-align: center;
+    font-size: 50px;
+    height: 25px;
+}

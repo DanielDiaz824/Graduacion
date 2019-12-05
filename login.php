@@ -55,6 +55,9 @@
       .fa-pulse{
         display:none;
       }
+      body{
+          background: url(img/fondo_inicio.jpg);
+        }
       </style>
 </head>
 
@@ -62,11 +65,14 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: f1fde3;">
     <a class="navbar-brand" href="#">
     <img src="img/loguillo.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
-    <a class="navbar-brand" href="xd.html">Universidad Politecnica de Durango</a>
+    <a class="navbar-brand" href="index.html">Universidad Politecnica de Durango</a>
     </nav>
     <section class="container"> 
      <section class="row">
       <div class="col-md-6">
+      <div>
+        <h3>Iniciar Sesion</h3><br>
+        </div>
        <form action="resultado.php" method="POST">
         <div class="form-group"><label for="">Usuario</label><input type="text" class="form-control" name="usuario"></div>
         <div class="form-group"><label for="">Password</label><input type="password" class="form-control" name="password"></div>
@@ -78,5 +84,4 @@
     </section>
   </section>
 </body>
-
 </html>

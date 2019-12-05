@@ -4550,7 +4550,8 @@ a.badge-dark:focus, a.badge-dark.focus {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  color: #ffffff;
+  background-color: #a9a5a559;
   border-radius: 0.3rem;
 }
 @media (min-width: 576px) {
@@ -9654,6 +9655,41 @@ h3 {
     color: inherit;
     border-color: #dee2e6;
   }
+}
+body {
+  background-image: url(../img/images1.jpg);
+  background-size: cover;
+}
+
+#CarouselPrincipal img {
+  height: 500px;
+}
+
+label {
+  color: white;
+}
+
+#paquetes h3 {
+  color: white;
+}
+
+#paquetes h4 {
+  color: white;
+}
+
+footer {
+  background-color: burlywood;
+}
+
+#Info {
+  display: flex;
+  align-items: center;
+}
+
+#Icon {
+  text-align: center;
+  font-size: 50px;
+  height: 25px;
 }
 
 /*# sourceMappingURL=main.css.map */

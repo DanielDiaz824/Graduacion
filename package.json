@@ -1,9 +1,8 @@
 {
-  "name": "Graduacion",
+  "name": "Jared",
   "version": "1",
-  "description": "Sitio graduacion",
   "main": "index.js",
-  "author": "Daniel",
+  "author": "Jared",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.3.1",

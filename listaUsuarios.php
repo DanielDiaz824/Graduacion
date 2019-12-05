@@ -1,43 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Lista</title>
-    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
+    
 <?php
-    include("conexion.php");
-    $sentencia="SELECT nombre,contrasena,correo,lugares FROM usuarios";
-    $resultado=$conexionBD->query($sentencia);
 
-    $usuarios=array();
-    while($fila=mysqli_fetch_assoc($resultado)){
-        $usuarios[]=$fila;
-    }
-    echo "<table class=\"table table-striped\">
-    <tr>
-    <th>Nombre</th>
-    <th>Contraseña</th>
-    <th>Correo</th>
-    <th>Lugares reservados</th>
-    </tr>";
+include("conexion.php");
 
-    foreach($usuarios as $usuario){
+$sentencia = "SELECT nombre, email, contrasena, lugares FROM usuarios";
+$resultado = $conexionDB->query($sentencia);
 
-        $nombre=$usuario["nombre"];
-        $contrasena=$usuario["contrasena"];
-        $correo=$usuario["correo"];
-        $lugares=$usuario["lugares"];
-        
-        echo"<tr>
-        <td>$nombre</td>
-        <td>$contrasena</td>
-        <td>$correo</td>
-        <td>$lugares</td>
+$usuarios = array();
+
+while($fila = mysqli_fetch_assoc($resultado)){
+$usuarios[]=$fila;
+}
+
+echo "<table class = \"table table-striped\">
+        <tr>
+            <th>Nombres</th>
+            <th>Correos</th>
+            <th>Contraseñas</th>
+            <th>Lugares reservados</th>
         </tr>";
-    }
-    echo"</table>";
-?>
+
+foreach($usuarios AS $usuario){
+    $nombre = $usuario["nombre"];
+    $correo = $usuario["email"];
+    $contraseña = $usuario["contrasena"];
+    $lugar = $usuario["lugares"];
+    echo "<tr>
+            <td>$nombre</td>
+            <td>$correo</td>
+            <td>$contraseña</td>
+            <td>$lugar</td>
+        </tr>";
+}
+echo "</table>";
+
+//var_dump($usuarios);
+
+
+?>    
 </body>
 </html>
