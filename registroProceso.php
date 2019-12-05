@@ -9,7 +9,8 @@
     
     $resultado= $conexionBD->query($statement);
     if($resultado){
-        echo "Registro exitoso";
+        header("Location:xd.html");
+        
     }
     else{
         echo "Error en el registro :(";

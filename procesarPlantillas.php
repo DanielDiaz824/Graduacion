@@ -19,6 +19,7 @@ foreach($resultSetMesas as $fila){
     FROM sillas S 
     LEFT JOIN reservaciones R ON R.id_silla = S.id
     LEFT JOIN usuarios U ON U.id=R.id_usuario
+    LEFT JOIN usuarios_paquetes P ON R.paquete = P.paquete
     WHERE id_mesa=$idMesa
     ";
 
@@ -31,7 +32,9 @@ foreach($resultSetSillas as $fila){
     
     $posicion = $fila["posicion"];
     $reservada = $fila["paquete"]? "silla-reservada":"";
-    $mensaje = $nombre ? "title=\"Esta silla ya la tiene $nombre\"":"";
+    $paquetes = $fila["paquete"];
+    $mensaje = $nombre ? "title=\"Esta silla ya la tiene $nombre Paquete $paquetes\"":"";
+
 
     $sillas .= sprintf($plantillaSilla,$posicion,$reservada,$mensaje,$idSilla);
 }

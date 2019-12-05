@@ -69,48 +69,18 @@
     </style>
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: f1fde3;">
+        <a class="navbar-brand" href="#">
+        <img src="img/loguillo.png" width="30" height="30" class="d-inline-block align-top" alt=""></a>
+        <a class="navbar-brand" href="xd.html">Universidad Politecnica de Durango</a>
+    </nav>
+    <h1>Aparta tus lugares!!!</h1>
     <section class="salon">
         <?php
             include("procesarPlantillas.php");
             echo $mesas;
         ?>
-        <?php
-            session_start();
-
-            $user="b24_24823680";
-            $password="daniel123";
-            $host="sql213.byethost.com";
-            $database="b24_24823680_graduacion";
-
-            $connection=mysql_connect ($host,$user,$password);
-            if(!$connection){
-                die('Could not connect:'.mysql_error());
-            }
-            mysql_select_db($database,$connection);
-            $idUsuario=$_SESSION["datosUsuario"]["id"];
-
-            $consulta2="SELECT * FROM  reservaciones";
-            $resultado_=$conexionBD->query($consulta2);
-            $filas2=$resultado_->num_rows; 
-            $usuarios_=array();
-            while ($fila1=$resultado_->fetch_assoc()){
-                $usuarios_[]=$fila1;
-            }
-            
-        $result = mysql_query("SELECT (SELECT SUM(lugares) FROM usuarios_paquetes WHERE idUsuario = $idUsuario)-(SELECT SUM(paquete) FROM reservaciones where id_usuario = $idUsuario) AS totalsum FROM DUAL");
-        $row=mysql_fetch_assoc($result);
-        $sum = $row['totalsum'];
-        if($filas2>0){
-            if($sum>0){
-                echo("<h1>Lugares reservados en total: ".$filas2.".</h1>");
-                echo("<h1>Solo le quedan ".$sum." lugares disponibles</h1>");
-            }else{
-                echo("<h1>Ya no quedan mas lugares</h1>");
-            }
-        }else{
-            echo("<h1>Seleccione una silla para continuar</h1>");
-        }
-        ?>
+        
     </section>
     
 

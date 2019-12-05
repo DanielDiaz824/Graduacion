@@ -59,7 +59,7 @@
             $(this).prop("disabled",false);
             $("#modalConfirmar").modal("hide");
         });
-        window.location.href="vip.php";
+        window.location.href="reservaciones.php";
     });
     $.ajax({
         url:"indicadores.php",
@@ -135,7 +135,7 @@
     </div>
     <div class="col-md-12">
         <button id="btnConfirmar" class="btn btn-primary">Confirmar</button>
-        <a class="btn btn-success" target="_blank" href="reservaciones.php" role="button">Reservaciones</a>
+        <a class="btn btn-success" href="reservaciones.php" role="button">Reservaciones</a>
     </div>
     </section>
     </section>
